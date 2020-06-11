@@ -9,6 +9,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import APIURL from "../helpers/environment";
 
 const RatingsEdit = (props) => {
   const [editshowName, setEditShowName] = useState(
@@ -28,7 +29,7 @@ const RatingsEdit = (props) => {
 
   const ratingUpdate = (event, ratings) => {
     event.preventDefault();
-    fetch(`http://localhost:3000/rating/${props.ratingToUpdate.id}`, {
+    fetch(`${APIURL}/rating/${props.ratingToUpdate.id}`, {
       method: "PUT",
       body: JSON.stringify({
         rating: {

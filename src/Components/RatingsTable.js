@@ -1,11 +1,12 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
 import RatingCreate from "../Components/RatingsCreate";
+import APIURL from "../helpers/environment";
 
 const RatingTable = (props) => {
   console.log(props.ratings);
   const deleteRating = (rating) => {
-    fetch(`http://localhost:3000/rating/${rating.id}`, {
+    fetch(`${APIURL}/rating/${rating.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

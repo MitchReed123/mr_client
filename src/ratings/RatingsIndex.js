@@ -5,6 +5,7 @@ import RatingsEdit from "../Components/RatingsEdit";
 import RatingCreate from "../Components/RatingsCreate";
 import Sitebar from "../Components/home/Navbar";
 import "./ratingsIndex.css";
+import APIURL from "../helpers/environment";
 
 const RatingsIndex = (props) => {
   const [ratings, setRatings] = useState([]);
@@ -12,7 +13,7 @@ const RatingsIndex = (props) => {
   const [ratingToUpdate, setratingToWorkout] = useState({});
 
   const fetchRatings = () => {
-    fetch("http://localhost:3000/rating", {
+    fetch(`${APIURL}/rating`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
