@@ -89,6 +89,7 @@ const RatingCreate = (props) => {
                 style={myStyles}
               >
                 <option value="">Select a Rating</option>
+                <option value="Concert">Concert</option>
                 <option value="G">G</option>
                 <option value="PG">PG</option>
                 <option value="PG-13">PG-13</option>

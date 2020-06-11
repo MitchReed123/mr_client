@@ -65,9 +65,10 @@ const Signup = (props) => {
             placeholder="Username(Required)"
             value={username}
             style={myStyles}
-            //pattern="[A-Za-z0-9_]{4,15}]" //only allow Captials A-Z and lowercase a-z and numbers between 0-9 and underscore. limits length from minimum 4 to max 15
-            minLength="4"
-            maxLength="15"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
+            title="Must contain atleast one number and one uppercase and lowercase letter, and at least 4 or more characters"
+            // minLength="4"
+            // maxLength="15"
             required
           />
         </FormGroup>
@@ -80,9 +81,10 @@ const Signup = (props) => {
             value={password}
             style={myStyles}
             required
-            minLength="5"
-            maxLength="40"
-            //pattern="[a-zA-Z0-9]{5,15}" // only allow Capitals A-Z and lowercase a-z and numbers between 0-9. limits length from minimum 5 to max 15
+            // minLength="5"
+            // maxLength="40"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters"
           />
         </FormGroup>
         <button type="submit" style={btnStyle}>

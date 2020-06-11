@@ -8,10 +8,6 @@ import {
   Collapse,
   Button,
   Nav,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 
 import "./Navbar.css";

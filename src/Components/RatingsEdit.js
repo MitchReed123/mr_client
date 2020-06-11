@@ -106,7 +106,7 @@ const RatingsEdit = (props) => {
               onChange={(e) => setEditShowRating(e.target.value)}
               style={myStyles}
             >
-              <option value="">N/A</option>
+              <option value="Concert">Concert</option>
               <option value="G">G</option>
               <option value="PG">PG</option>
               <option value="PG-13">PG-13</option>

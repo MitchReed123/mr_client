@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import "./Navbar.css";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Input } from "reactstrap";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -64,8 +64,10 @@ const Login = (props) => {
             className="Username"
             value={username}
             style={myStyles}
-            minLength="4"
-            maxLength="15"
+            // minLength="4"
+            // maxLength="15"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
+            title="Must contain atleast one number and one uppercase and lowercase letter, and at least 4 or more characters"
             required
           />
         </FormGroup>
@@ -76,12 +78,14 @@ const Login = (props) => {
             onChange={(e) => setPassword(e.target.value)}
             name="password"
             type="password"
-            className="password"
+            // className="password"
             placeholder="Password(Required)"
             value={password}
             style={myStyles}
-            minLength="4"
-            maxLength="15"
+            // minLength="4"
+            // maxLength="15"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters"
             required
           />
         </FormGroup>
