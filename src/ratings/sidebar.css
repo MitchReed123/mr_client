@@ -1,0 +1,33 @@
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  min-height: 100%;
+  min-width: 15%;
+}
+.sidebar_all {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-list-styling {
+  padding-left: 25px;
+  padding-top: 15px;
+  min-width: 15%;
+  background-color: transparent;
+  color: white;
+  min-height: 110%;
+}
+.sidebar-list a {
+  color: #45a29e;
+  font-size: 23px;
+  font-weight: bold;
+  padding: 0;
+}
+.sidebar-list a:hover {
+  text-decoration: none;
+  color: #d2553f;
+}
+.sidebar-route {
+  flex: 1;
+  margin-left: 50px;
+  margin-top: 30px;
+}

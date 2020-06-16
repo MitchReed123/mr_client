@@ -2,3 +2,11 @@
   background-color: #45a29e !important;
   border-radius: 10px;
 }
+@font-face {
+  font-family: blacklist;
+  src: url("../Components/home/assets/Blacklisted.ttf");
+}
+
+#messages {
+  font-family: blacklist;
+}

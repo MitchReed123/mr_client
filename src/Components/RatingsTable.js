@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
-import RatingCreate from "../Components/RatingsCreate";
 import APIURL from "../helpers/environment";
 
 const RatingTable = (props) => {
@@ -18,15 +17,20 @@ const RatingTable = (props) => {
   const ratingMapper = () => {
     return props.ratings.map((rating, index) => {
       return (
+        //if window.location.hostname === "/profile" ? (null) :(display buttons)
         <tr key={index}>
           {/* <th scope="row">{rating.id}</th> */}
-          <td>{rating.showName}</td>
-          <td>{rating.showType}</td>
-          <td>{rating.showRating}</td>
-          <td>{rating.myRating}</td>
-          <td>
+          <td style={{ textAlign: "center" }}>{rating.showName}</td>
+          <td style={{ textAlign: "center" }}>{rating.showType}</td>
+          <td style={{ textAlign: "center" }}>{rating.showRating}</td>
+          <td style={{ textAlign: "center" }}>{rating.myRating}</td>
+          <td style={{ textAlign: "center" }}>
             <Button
-              color="warning"
+              style={{
+                backgroundColor: "#66FCF1",
+                color: "black",
+                borderColor: "#1F2833",
+              }}
               onClick={() => {
                 props.editUpdateRating(rating);
                 props.updateOn();
@@ -35,7 +39,12 @@ const RatingTable = (props) => {
               Update
             </Button>
             <Button
-              color="danger"
+              style={{
+                backgroundColor: "#1F2833",
+                color: "white",
+                margin: "3px",
+                borderColor: "#f5f2d0",
+              }}
               onClick={() => {
                 deleteRating(rating);
               }}
@@ -51,17 +60,19 @@ const RatingTable = (props) => {
   return (
     <>
       <br />
-      <h3 style={{ color: "#000000" }}>All Ratings</h3>
-      <hr />
+      <h2 style={{ color: "#000000", textAlign: "center", margin: "15px" }}>
+        All Ratings
+      </h2>
+      {/* <br /> */}
       <Table>
         <thead>
-          <tr>
+          <tr style={{ textAlign: "center" }}>
             {/* <th style={{ color: "#ffffff" }}>#</th> */}
-            <th style={{ padding: "10px", color: "#ffffff" }}>Show Name</th>
-            <th style={{ padding: "10px", color: "#ffffff" }}>Show Type</th>
-            <th style={{ padding: "10px", color: "#ffffff" }}>Show Rating</th>
-            <th style={{ padding: "10px", color: "#ffffff" }}>My Rating</th>
-            <th style={{ padding: "10px", color: "#ffffff" }}>Update/Delete</th>
+            <th style={{ padding: "10px", color: "#000000" }}>Show Name</th>
+            <th style={{ padding: "10px", color: "#000000" }}>Show Type</th>
+            <th style={{ padding: "10px", color: "#000000" }}>Show Rating</th>
+            <th style={{ padding: "10px", color: "#000000" }}>My Rating</th>
+            <th style={{ padding: "10px", color: "#000000" }}>Update/Delete</th>
           </tr>
         </thead>
         <tbody style={{ padding: "10px", color: "#ffffff" }}>

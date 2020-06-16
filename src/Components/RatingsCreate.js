@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./home/Navbar.css";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import APIURL from "../helpers/environment";
@@ -43,15 +43,16 @@ const RatingCreate = (props) => {
     color: "#ffffff",
     borderRadius: "8px",
     textAlign: "center",
-    textDecoration: "none",
-    textAlign: "center",
     padding: "0",
     margin: "0",
   };
 
   return (
     <div id="createDiv">
-      <h3 style={{ color: "#000000" }}>Create a Rating!</h3>
+      <br />
+      <h2 style={{ color: "#000000", textAlign: "center" }}>
+        Create a Rating!
+      </h2>
       <Form onSubmit={handleSubmit} inLine Form>
         <Row>
           <Col md="3">
@@ -75,6 +76,7 @@ const RatingCreate = (props) => {
                 placeholder="Shows Type"
                 onChange={(e) => setShowType(e.target.value)}
                 style={myStyles}
+                maxLength="13"
               />
             </FormGroup>
           </Col>
@@ -105,8 +107,9 @@ const RatingCreate = (props) => {
                 name="myRating"
                 value={myRating}
                 onChange={(e) => setMyRating(e.target.value)}
-                placeholder="My Rating"
+                placeholder="My Rating/10"
                 style={myStyles}
+                maxLength="2"
               />
             </FormGroup>
           </Col>
@@ -122,6 +125,10 @@ const RatingCreate = (props) => {
             textAlign: "center",
             textDecoration: "none",
             fontSize: "15px",
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "7px",
           }}
         >
           Click to submit

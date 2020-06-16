@@ -1,9 +1,9 @@
 body {
-  text-align: center;
+  /* text-align: center; */
   background-color: #1f2833;
 }
 
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -16,4 +16,13 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+} */
+
+#editLabel {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+#editButton {
+  text-align: center;
 }

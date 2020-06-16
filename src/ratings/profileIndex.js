@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
-import RatingsTable from "../Components/RatingsTable";
-import RatingsEdit from "../Components/RatingsEdit";
-import RatingCreate from "../Components/RatingsCreate";
-import "./ratingsIndex.css";
+import { Container, Row, Col, Button, Table } from "reactstrap";
+import ProfilesEdit from "../Components/profileEdit";
+import ProfileCreate from "../Components/profileCreate";
 import APIURL from "../helpers/environment";
+import ProfileTable from "../Components/profileTable";
+import RatingsTable from "../Components/RatingsTable";
 
-const RatingsIndex = (props) => {
-  const [ratings, setRatings] = useState([]);
+const ProfileIndex = (props) => {
+  const [profiles, setProfiles] = useState([]);
   const [updateActive, setUpdateActive] = useState(false);
+  const [profileToUpdate, setProfileToUpdate] = useState({});
+  const [ratings, setRatings] = useState([]);
   const [ratingToUpdate, setratingToWorkout] = useState({});
 
   const fetchRatings = () => {
@@ -26,9 +28,30 @@ const RatingsIndex = (props) => {
       });
   };
 
+  const fetchProfiles = () => {
+    console.log("App token", props.token);
+    fetch(`${APIURL}/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((profileData) => {
+        console.log("testing", profileData.profiles);
+        setProfiles(profileData.profiles);
+      });
+  };
+
   const editUpdateRating = (rating) => {
     console.log(rating);
     setratingToWorkout(rating);
+  };
+
+  const editUpdateProfile = (profile) => {
+    console.log(profile);
+    setProfileToUpdate(profile);
   };
 
   const updateOn = () => {
@@ -38,6 +61,11 @@ const RatingsIndex = (props) => {
   const updateOff = () => {
     setUpdateActive(false);
   };
+
+  useEffect(() => {
+    console.log("profile effect ran");
+    fetchProfiles();
+  }, []);
 
   useEffect(() => {
     console.log("effect ran");
@@ -52,9 +80,11 @@ const RatingsIndex = (props) => {
       </h1>
     ) : localStorage.getItem("message") === "user succesfully logged in" ? (
       <h1 id="messages" style={{ textAlign: "center" }}>
-        <font color="#45A29E">Welcome Back, </font>
-        <font color="#d2553f">{localStorage.getItem("username")}</font>
-        <font color="#45A29E">!</font>
+        <font color="#d2553f">
+          {localStorage.getItem("username")}
+          <font color="#45A29E">'</font>s
+        </font>
+        <font color="#45A29E"> Profile</font>
       </h1>
     ) : localStorage.getItem("message") === "user created" ? (
       <h1 id="messages" style={{ textAlign: "center" }}>
@@ -66,38 +96,48 @@ const RatingsIndex = (props) => {
     );
   }
 
+  function createProfile() {
+    return profiles.length <= 0 ? (
+      <ProfileCreate
+        fetchProfiles={fetchProfiles}
+        token={props.token}
+        updateOff={updateOff}
+      />
+    ) : (
+      ""
+    );
+  }
+
   return (
     <div>
-      {/* <h1 style={{ textAlign: "center", color: "white" }}>
-        Welcome {localStorage.getItem("username")}!
-        <font color="#45A29E">Welcome </font>
-        <font color="#d2553f">{localStorage.getItem("username")}</font>
-      </h1> */}
+      <br />
       {Welcoming()}
       <br />
       <Container className="test">
         <Row>
+          <Col md="12">{createProfile()}</Col>
+          <br />
           <Col md="12">
-            <RatingCreate fetchRatings={fetchRatings} token={props.token} />
+            <div>
+              {profiles === undefined ? null : (
+                <ProfileTable
+                  ratings={ratings}
+                  profiles={profiles}
+                  editUpdateProfile={editUpdateProfile}
+                  updateOn={updateOn}
+                  fetchProfiles={fetchProfiles}
+                  token={props.token}
+                />
+              )}
+            </div>
           </Col>
-          <Col md="12">
-            <h2>
-              <RatingsTable
-                ratings={ratings}
-                editUpdateRating={editUpdateRating}
-                updateOn={updateOn}
-                fetchRatings={fetchRatings}
-                token={props.token}
-                style={{ overflow: "auto" }}
-              />
-            </h2>
-          </Col>
+
           {updateActive ? (
-            <RatingsEdit
-              ratingToUpdate={ratingToUpdate}
+            <ProfilesEdit
+              profileToUpdate={profileToUpdate}
               updateOff={updateOff}
               token={props.token}
-              fetchRatings={fetchRatings}
+              fetchProfiles={fetchProfiles}
             />
           ) : (
             <></>
@@ -117,4 +157,4 @@ const RatingsIndex = (props) => {
   );
 };
 
-export default RatingsIndex;
+export default ProfileIndex;

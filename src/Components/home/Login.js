@@ -23,6 +23,9 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((data) => {
         props.updateToken(data.sessionToken);
+        console.log(data);
+        props.updateUsername(data.user.username);
+        props.updateMessage(data.message);
       });
   };
 
@@ -49,12 +52,19 @@ const Login = (props) => {
     borderRadius: "8px",
     textAlign: "center",
     textDecoration: "none",
-    fontSize: "15px",
+    fontSize: "20px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "center",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    paddingTop: "5px",
+    paddingBottom: "5px",
   };
 
   return (
     <div>
-      <h1 style={{ color: "#FFFFFF" }}>Login</h1>
+      <h1 style={{ color: "#FFFFFF", textAlign: "center" }}>Login</h1>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           {/* <Label htmlFor="username">Username</Label> */}

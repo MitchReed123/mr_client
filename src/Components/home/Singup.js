@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Input } from "reactstrap";
 import APIURL from "../../helpers/environment";
 
 const Signup = (props) => {
@@ -22,6 +22,9 @@ const Signup = (props) => {
       .then((response) => response.json())
       .then((data) => {
         props.updateToken(data.sessionToken);
+        console.log(data);
+        props.updateUsername(data.user.username);
+        props.updateMessage(data.message);
       });
   };
 
@@ -31,8 +34,6 @@ const Signup = (props) => {
     textDecoration: "bold",
     color: "#ffffff",
     borderRadius: "8px",
-    textAlign: "center",
-    textDecoration: "none",
     textAlign: "center",
     padding: "0",
     margin: "0 auto",
@@ -50,12 +51,19 @@ const Signup = (props) => {
     borderRadius: "8px",
     textAlign: "center",
     textDecoration: "none",
-    fontSize: "15px",
+    fontSize: "20px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "center",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    paddingTop: "5px",
+    paddingBottom: "5px",
   };
 
   return (
     <div>
-      <h1 style={{ color: "#FFFFFF" }}>Sign Up</h1>
+      <h1 style={{ color: "#FFFFFF", textAlign: "center" }}>Sign Up</h1>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           {/* <Label htmlFor="username">Username</Label> */}
@@ -68,8 +76,6 @@ const Signup = (props) => {
             style={myStyles}
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
             title="Must contain atleast one number and one uppercase and lowercase letter, and at least 4 or more characters"
-            // minLength="4"
-            // maxLength="15"
             required
           />
         </FormGroup>
@@ -77,13 +83,11 @@ const Signup = (props) => {
           <Input
             onChange={(e) => setPassword(e.target.value)}
             name="password"
-            // type="password"
+            type="password"
             placeholder="Password(Required)"
             value={password}
             style={myStyles}
             required
-            // minLength="5"
-            // maxLength="40"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters"
           />

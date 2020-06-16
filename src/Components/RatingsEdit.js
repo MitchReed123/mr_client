@@ -72,7 +72,7 @@ const RatingsEdit = (props) => {
       <ModalBody style={{ backgroundColor: "#45a29e" }}>
         <Form onSubmit={ratingUpdate}>
           <FormGroup>
-            <Label htmlFor="showName" style={{ color: "White" }}>
+            <Label htmlFor="showName" id="editLabel" style={{ color: "White" }}>
               Edit Show Name
             </Label>
             <Input
@@ -84,7 +84,7 @@ const RatingsEdit = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="showType" style={{ color: "White" }}>
+            <Label htmlFor="showType" id="editLabel" style={{ color: "White" }}>
               Edit Show Type
             </Label>
             <Input
@@ -93,10 +93,15 @@ const RatingsEdit = (props) => {
               placeholder="Show Type"
               onChange={(e) => setEditShowType(e.target.value)}
               style={myStyles}
+              maxLength="13"
             />
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="showRating" style={{ color: "White" }}>
+            <Label
+              htmlFor="showRating"
+              id="editLabel"
+              style={{ color: "White" }}
+            >
               Edit Show Rating
             </Label>
             <Input
@@ -115,7 +120,7 @@ const RatingsEdit = (props) => {
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="myRating" style={{ color: "White" }}>
+            <Label htmlFor="myRating" id="editLabel" style={{ color: "White" }}>
               My Rating
             </Label>
             <Input
@@ -133,6 +138,7 @@ const RatingsEdit = (props) => {
               backgroundColor: "#1f2833",
               borderRadius: "8px",
               borderWidth: "2px",
+              marginLeft: "32%",
             }}
           >
             Update your Rating!
