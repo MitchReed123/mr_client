@@ -10,6 +10,7 @@ switch (window.location.hostname) {
   case "mr-ratings.herokuapp.com":
     // this is the full url of the deployed API(Server side)
     APIURL = "https://mr-serverapi2020.herokuapp.com";
+  // testing
 }
 
 export default APIURL;
