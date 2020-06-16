@@ -9,7 +9,7 @@ switch (window.location.hostname) {
   // this is the deployed react application
   case "mr-ratings.herokuapp.com":
     // this is the full url of the deployed API(Server side)
-    APIURL = "https://mr-ratingsapi.herokuapp.com";
+    APIURL = "https://mr-serverapi2020.herokuapp.com";
 }
 
 export default APIURL;
