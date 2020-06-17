@@ -88,7 +88,6 @@ const ProfilesEdit = (props) => {
     justifyContent: "center",
     alignItems: "center",
     maxWidth: "200px",
-    height: "100px",
   };
   return (
     <Modal isOpen={true}>
